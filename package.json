@@ -8,5 +8,13 @@
     "start": "node server.js"
   },
   "author": "orange",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanSugarman/node-study.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IvanSugarman/node-study/issues"
+  },
+  "homepage": "https://github.com/IvanSugarman/node-study#readme"
 }
