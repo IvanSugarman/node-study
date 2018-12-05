@@ -36,39 +36,113 @@
 // console.log('copy-buffer', Buffer.from(copy.data));
 
 // Stream
-var fs = require('fs');
-var data  = '';
+const fs = require('fs');
+const util = require('util');
+// var data  = '';
+//
+// var readerStream = fs.createReadStream('input.txt');
+//
+// readerStream.setEncoding('UTF8');
+//
+// readerStream.on('data', chunk => {
+//     data += chunk;
+// });
+//
+// readerStream.on('end', function() {
+//     console.log(data);
+// });
+//
+// readerStream.on('error', function(err){
+//     console.log(err.stack);
+// });
+//
+//
+// var outputStream = fs.createWriteStream('output.txt');
+// var data = 'Hi, this is Oscar.';
+//
+// outputStream.write(data, 'UTF8');
+//
+// outputStream.end();
+//
+// outputStream.on('finish', function() {
+//     console.log('写入完成');
+// });
+//
+// outputStream.on('error', function(err){
+//     console.log(err.stack);
+// });
+//
+// console.log("程序执行完毕");
 
-var readerStream = fs.createReadStream('input.txt');
+// console.log('start');
+//
+// fs.open(__dirname + '/a.txt', 'r+', (err, fd) => {
+//     if (err) {
+//         return console.error(err);
+//     }
+//
+//     console.log('success', fd);
+// });
+//
+// fs.stat(__dirname + '/a.txt', (err, fd) => {
+//     console.log(fd.isFile());
+// });
 
-readerStream.setEncoding('UTF8');
+// const buf = new Buffer.alloc(1024);
+//
+// console.log('ready');
+//
+// fs.open(__dirname + '/input.txt', 'r+', (err, fd) => {
+//    if (err) {
+//        return console.error(err);
+//    }
+//    console.log('open');
+//    console.log('start read');
+//
+//    fs.read(fd, buf, 0, buf.length, 0, (err, bytes) => {
+//       if (err) {
+//           console.log(err);
+//       }
+//       console.log('bytes', bytes);
+//
+//       if (bytes) {
+//           console.log(buf.slice(0, bytes).toString());
+//       }
+//
+//        fs.close(fd, err => {
+//            if (err) console.log(err);
+//
+//            console.log('closed');
+//        });
+//    });
+// });
+//
+//
+// fs.open(__dirname + '/input.txt', 'r+', (err, fd) => {
+//     if (err) return console.error(err);
+//
+//     console.log('slice 10 bytes.');
+//
+//     fs.ftruncate(fd, 10, err => {
+//         if (err) console.error(err);
+//
+//         fs.read(fd, buf, 0, buf.length, 0, (err, bytes) => {
+//             if (err) console.error(err);
+//
+//             if (bytes > 0) console.log(buf.slice(0, bytes).toString());
+//
+//             fs.close(fd, err => {
+//                 if (err) console.log(err);
+//             });
+//         });
+//     })
+// });
 
-readerStream.on('data', chunk => {
-    data += chunk;
+fs.readdir(__dirname + '/..', (err, fd) => {
+    if (err) console.error(err);
+
+    console.log(util.isArray(fd));
+    // fd.forEach(file => {
+    //     console.log(file);
+    // });
 });
-
-readerStream.on('end', function() {
-    console.log(data);
-});
-
-readerStream.on('error', function(err){
-    console.log(err.stack);
-});
-
-
-var outputStream = fs.createWriteStream('output.txt');
-var data = 'Hi, this is Oscar.';
-
-outputStream.write(data, 'UTF8');
-
-outputStream.end();
-
-outputStream.on('finish', function() {
-    console.log('写入完成');
-});
-
-outputStream.on('error', function(err){
-    console.log(err.stack);
-});
-
-console.log("程序执行完毕");
